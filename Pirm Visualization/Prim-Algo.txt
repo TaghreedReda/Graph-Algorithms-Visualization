@@ -1,0 +1,74 @@
+//Prim Algothism By Mostafa & Tagreed 
+function setup() {
+  createCanvas(1500, 750);
+ 
+}
+
+var Vertices = [];
+function draw() {
+    background(0);  
+    var ReachedPoints = [];
+    var UnReacedPoints=[];
+    
+    //Just Copying Vertices to  UnReacedPoints
+    for(var i=0;i<Vertices.length;i++){
+    UnReacedPoints.push(Vertices[i]);
+         
+}
+    // Selecting Starting Point
+    ReachedPoints.push(UnReacedPoints[0]);
+    //Delete elemts by Index and Number of Moves
+    UnReacedPoints.splice(0,1); 
+    
+    while(UnReacedPoints.length){
+        //Max Lenght 
+        var BigLenght = 10000;
+        
+        var IsReach,IsNReach;
+        // Caculating the Neariest Points to Each Other To Form Tree
+        for (var i=0;i<ReachedPoints.length;i++){
+            
+            for( var j=0;j<UnReacedPoints.length;j++){
+                var ver1=ReachedPoints[i];
+                var ver2=UnReacedPoints[j];
+             var dis = dist(ver1.x,ver1.y,ver2.x,ver2.y);
+             
+                if  (dis<BigLenght){
+                    //Find Smalliset Lenght Between Points
+                    BigLenght=dis;
+                    //This is the Shortest Points indexs
+                    IsReach = i;
+                    IsNReach = j;
+                }
+            }
+        }
+        stroke(255,0,0);
+        strokeWeight(3);
+        //Drawing The Connecting Line
+        
+         line(ReachedPoints[IsReach].x,ReachedPoints[IsReach].y, UnReacedPoints[IsNReach].x ,UnReacedPoints[IsNReach].y);
+        
+    ReachedPoints.push(UnReacedPoints[IsNReach]);
+    UnReacedPoints.splice(IsNReach,1); //Delete element of Reached Point
+        
+       
+    }
+    //Just To Draw Points by MousePreed Function DownHere
+    for(var i=0;i<Vertices.length;i++){
+     fill(255,255,255);
+    ellipse(Vertices[i].x,Vertices[i].y,20,20);
+    }
+    
+}
+    
+// At Each Press add 10 Points
+
+function mousePressed(){
+    
+    for (var i=0;i<10;i++){
+    var Vec = createVector(random(width) , random(height));
+    Vertices.push(Vec);
+    }
+} 
+    
+
