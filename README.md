@@ -1,2 +1,2 @@
 # Graph-Algorithms-Visualization
-Graph Algorithms Visualization by using js.p5
+Graph Algorithms Visualization by using p5.js
