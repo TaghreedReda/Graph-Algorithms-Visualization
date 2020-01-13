@@ -1,2 +1,4 @@
 # Graph-Algorithms-Visualization
-Graph Algorithms Visualization by using p5.js
+Educational application for anyone wants to learn how graph algorithms work and select the shortest path implemnted using js.p5
+Current Implemented algorithms are ( Dijkestra and Pirm ) .
+
